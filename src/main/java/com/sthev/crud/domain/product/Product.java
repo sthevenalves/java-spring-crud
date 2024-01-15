@@ -11,10 +11,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "product")
 @Table(name = "product")
 @Setter @Getter
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor 
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 
 public class Product {
@@ -24,5 +25,10 @@ public class Product {
 	
 	private String name;
 	
-	private Integer price_in_cents;
+	private Integer prince_in_cents;
+	
+	public Product(RequestProduct requestProduct) {
+		this.name = requestProduct.name();
+		this.prince_in_cents = requestProduct.prince_in_cents();
+	}
 }
