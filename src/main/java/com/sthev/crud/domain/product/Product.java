@@ -24,21 +24,33 @@ public class Product {
     private String name;
 
     private Integer prince_in_cents;
+    
+    private Boolean active;
 
     public Product(RequestProduct requestProduct){
         this.name = requestProduct.name();
         this.prince_in_cents = requestProduct.prince_in_cents();
+        this.active = true;
     }
     
 	public Product() {
 	    	
 	    }
     
-    public Product(String id, String name, Integer prince_in_cents) {
+    public Product(String id, String name, Integer prince_in_cents, Boolean active) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.prince_in_cents = prince_in_cents;
+		this.active = active;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	public String getId() {
