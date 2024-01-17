@@ -19,6 +19,7 @@ import com.sthev.crud.domain.product.Product;
 import com.sthev.crud.domain.product.ProductRepository;
 import com.sthev.crud.domain.product.RequestProduct;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -48,8 +49,9 @@ public class ProductController {
     		product.setName(data.name());
     		product.setPrince_in_cents(data.prince_in_cents());
     		return ResponseEntity.ok(product);
+    	}else {
+    		throw new EntityNotFoundException();
     	}
-    	return ResponseEntity.notFound().build();
     }
     
     @DeleteMapping("/{id}")
@@ -60,8 +62,9 @@ public class ProductController {
     		Product product = optionalProduct.get();
     		product.setActive(false);
     		return ResponseEntity.noContent().build();
+    	}else {
+    		throw new EntityNotFoundException();
     	}
-    	return ResponseEntity.notFound().build();
     }
 
 }
